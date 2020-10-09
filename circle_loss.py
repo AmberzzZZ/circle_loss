@@ -71,7 +71,7 @@ def circle_model(input_shape=(28,28,1)):
     x = MaxPooling2D(pool_size=2, strides=2, padding='same')(x)
 
     x = GlobalAveragePooling2D()(x)
-    x = Dense(128)(x)
+    x = Dense(128, activation='relu')(x)
     # inpt2 = Input((3,))
     # x = Lambda(circle_loss, arguments={'labels': inpt2})(x)
 
@@ -107,6 +107,7 @@ if __name__ == '__main__':
     print(y_train.shape, np.max(y_train))
 
     model = circle_model(input_shape=(28,28,1))
+    model.load_weights("circle_cls3_ep_20_loss_5.994.h5")
     filepath = "circle_cls3_ep_{epoch:02d}_loss_{loss:.3f}.h5"
     checkpoint = ModelCheckpoint(filepath, monitor='loss', mode='min',verbose=1, save_weights_only=True)
     model.fit(x=x_train, y=y_train, shuffle=True,

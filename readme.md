@@ -25,6 +25,9 @@
         sn和sp不同时计算，因此可以解耦成两个部分
 
 
+    1.5 loss收敛曲线不稳定
+
+
 
 2. visualize
     sklearn的tsne，观察不出啥
